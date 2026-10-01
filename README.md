@@ -400,5 +400,4 @@ Você não precisa reinstalar o FastAPI enquanto o ambiente virtual existir. Abr
 O material original oferece uma boa sequência inicial: ambiente virtual, primeira rota, execução local e testes pelo navegador. Porém, o exemplo apresentado como completo estava interrompido na busca por ID: faltava retornar o produto encontrado e implementar POST, PUT e DELETE. Assim, o aluno não conseguiria realizar o cadastro nem concluir o exercício proposto.
 
 Este roteiro completa essas operações, organiza os códigos em blocos copiáveis e acrescenta uma sequência de testes com resultados esperados. Para a primeira aula, priorize as etapas 1 a 6; avance para o CRUD conforme o ritmo da turma. Banco de dados, autenticação e organização em múltiplos arquivos podem ficar para aulas seguintes.
-#   a u l a - a p i  
- 
+#
