@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Material de apoio para construir sua primeira API com Python e FastAPI: instalação, rotas, CRUD e exercícios práticos.">
+<title>Primeira API com FastAPI | Material de apoio</title>
+<style>
+:root{color-scheme:light;--ink:#172b3a;--muted:#526475;--accent:#087f74;--paper:#fff;--border:#dce5e9}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#f3f6f8;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.75}
+a{color:#006d67;text-underline-offset:3px}a:hover{color:#00443f}a:focus-visible,[tabindex]:focus-visible{outline:3px solid #087f74;outline-offset:4px}
+.skip{position:absolute;top:-100px;left:16px;background:white;padding:12px;z-index:3}.skip:focus{top:12px}
+header{background:#123643;color:white;padding:34px max(24px,calc((100vw - 1200px)/2))}header p{margin:0}header .eyebrow{color:#91e5d5;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}header .title{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:750;line-height:1.3;margin:8px 0}header .subtitle{color:#d3e6eb}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:32px;max-width:1200px;margin:32px auto;padding:0 24px}aside{align-self:start;position:sticky;top:24px;background:white;border:1px solid var(--border);border-radius:12px;padding:20px;max-height:calc(100vh - 48px);overflow:auto}aside h2{font-size:1rem;margin:0 0 12px}nav ol{list-style:none;margin:0;padding:0}nav li{margin:0 0 10px;line-height:1.45}nav a{text-decoration:none;font-size:.9rem}main{min-width:0;background:var(--paper);padding:clamp(20px,4vw,44px);border:1px solid var(--border);border-radius:12px}h1{font-size:clamp(1.7rem,4vw,2.35rem);line-height:1.25;margin:0 0 24px;letter-spacing:-.03em}h2{font-size:1.5rem;line-height:1.35;margin:48px 0 18px;padding-top:24px;border-top:1px solid var(--border)}h3{font-size:1.13rem;margin:28px 0 12px;line-height:1.5}p{margin:0 0 18px}li{margin-bottom:8px}code{font-family:Consolas,"Cascadia Code",monospace;font-size:.9em;background:#edf3f5;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}.code-block{margin:22px 0;border-radius:10px;overflow:hidden;background:#152b37;color:#edf7fb}.code-label{padding:8px 18px;background:#203e4d;color:#b5d7df;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}pre{overflow-x:auto;margin:0;padding:20px;line-height:1.65;tab-size:4}pre code{background:none;padding:0;color:inherit;overflow-wrap:normal;font-size:.875rem}blockquote{margin:22px 0;padding:18px 20px;background:#eaf7f3;border-left:4px solid var(--accent);border-radius:0 8px 8px 0}blockquote p{margin:0}.table-scroll{overflow-x:auto;margin:22px 0}table{border-collapse:collapse;width:100%;font-size:.93rem}th,td{text-align:left;padding:12px 14px;border:1px solid var(--border);vertical-align:top}th{background:#eef5f6}tbody tr:nth-child(even){background:#fafcfd}footer{text-align:center;color:var(--muted);padding:0 24px 32px;font-size:.875rem}.back{display:inline-block;margin-top:32px}
+@media(max-width:850px){.layout{grid-template-columns:1fr;gap:20px;margin:20px auto;padding:0 16px}aside{position:static;max-height:none}nav ol{columns:2;column-gap:24px}nav li{break-inside:avoid}header{padding:28px 20px}}@media(max-width:500px){nav ol{columns:1}main{padding:22px 18px}th,td{padding:10px}pre{padding:16px}h2{font-size:1.3rem}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{body{background:white;color:black}header,aside,footer,.skip,.back{display:none}.layout{display:block;margin:0;padding:0;max-width:none}main{border:0;padding:0}.code-block{background:#f5f5f5;color:black;border:1px solid #ddd;break-inside:avoid}.code-label{background:#eee;color:black}pre{white-space:pre-wrap;overflow-wrap:anywhere}h2,h3{break-after:avoid}a{color:inherit}blockquote{background:#f5f5f5}.table-scroll{overflow:visible}}
+</style>
+</head>
+<body id="topo">
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<header><p class="eyebrow">Python · FastAPI · Aula prática</p><p class="title">Sua primeira API começa aqui</p><p class="subtitle">Material de apoio · Do primeiro comando ao cadastro de produtos</p></header>
+<div class="layout">
+<aside><nav aria-label="Sumário da aula"><h2>Etapas da aula</h2><ol><li><a href="#1-o-que-e-uma-api">1. O que é uma API?</a></li><li><a href="#2-prepare-o-computador">2. Prepare o computador</a></li><li><a href="#3-crie-a-pasta-e-o-ambiente-virtual">3. Crie a pasta e o ambiente virtual</a></li><li><a href="#4-instale-o-fastapi">4. Instale o FastAPI</a></li><li><a href="#5-crie-sua-primeira-rota">5. Crie sua primeira rota</a></li><li><a href="#6-conheca-a-pagina-de-testes">6. Conheça a página de testes</a></li><li><a href="#7-evolua-para-uma-api-de-produtos">7. Evolua para uma API de produtos</a></li><li><a href="#8-teste-o-crud-passo-a-passo">8. Teste o CRUD, passo a passo</a></li><li><a href="#9-atividade-pratica">9. Atividade prática</a></li><li><a href="#10-como-retomar-o-projeto-em-outra-aula">10. Como retomar o projeto em outra aula</a></li><li><a href="#11-problemas-comuns">11. Problemas comuns</a></li><li><a href="#nota-para-o-professor-revisao-do-material-original">Nota para o professor: revisão do material original</a></li></ol></nav></aside>
+<main id="conteudo">
+<h1 id="primeira-api-com-python-e-fastapi">Primeira API com Python e FastAPI</h1>
+<p>Material de apoio para a primeira aula de API. Vamos começar com uma resposta simples e depois construir um cadastro de produtos, usando um único arquivo Python.</p>
+<p><strong>Ao terminar, você conseguirá:</strong> iniciar uma API, testar suas rotas pelo navegador, cadastrar produtos e entender respostas de sucesso e de erro.</p>
+<p>Você precisa de conhecimentos básicos de Python: funções, classes, listas e dicionários. Não precisa criar um frontend nem instalar um banco de dados nesta aula.</p>
+<h2 id="1-o-que-e-uma-api">1. O que é uma API?</h2>
+<p>Uma API permite que programas se comuniquem. Por exemplo, um aplicativo de loja pede a lista de produtos para uma API, que responde com os dados.</p>
+<p>O fluxo desta aula será:</p>
+<div class="code-block"><div class="code-label">text</div><pre><code>Navegador ou página /docs → requisição HTTP → API → resposta com dados em JSON</code></pre></div>
+<ul><li><strong>Requisição:</strong> pedido enviado para a API.</li><li><strong>Rota:</strong> caminho que identifica uma operação, como <code>/produtos</code>.</li><li><strong>Método HTTP:</strong> indica a operação desejada, como consultar ou cadastrar.</li><li><strong>Resposta:</strong> dados e código de status devolvidos pela API.</li><li><strong>JSON:</strong> formato de texto usado para trocar dados.</li></ul>
+<p>Exemplo de JSON:</p>
+<div class="code-block"><div class="code-label">json</div><pre><code>{
+  &quot;nome&quot;: &quot;Teclado&quot;,
+  &quot;preco&quot;: 120.0
+}</code></pre></div>
+<p>Em JSON, as chaves e os textos usam aspas duplas. Números decimais usam ponto: <code>120.50</code>, e não <code>120,50</code>.</p>
+<p><strong>FastAPI</strong> é um framework Python para criar APIs. Ele também gera uma página interativa em <code>/docs</code>, que vamos usar para enviar requisições. Veja os <a href="https://fastapi.tiangolo.com/tutorial/first-steps/">primeiros passos na documentação oficial</a>.</p>
+<h2 id="2-prepare-o-computador">2. Prepare o computador</h2>
+<p>Instale o Python pelo <a href="https://www.python.org/downloads/">site oficial</a>. Use Python 3.10 ou superior para acompanhar este material. No instalador do Windows, marque <strong>Add Python to PATH</strong>, se essa opção aparecer.</p>
+<p>Você pode editar os arquivos no <a href="https://code.visualstudio.com/">Visual Studio Code</a>. Abra o terminal em <strong>Terminal → Novo Terminal</strong> e use o PowerShell no Windows.</p>
+<p>Confira a instalação:</p>
+<div class="code-block"><div class="code-label">powershell</div><pre><code>python --version</code></pre></div>
+<p>Se o comando não funcionar, tente <code>py --version</code>. Nesse caso, substitua <code>python</code> por <code>py</code> nos comandos de criação do ambiente virtual.</p>
+<blockquote><p>Os blocos de comandos devem ser digitados no terminal. Os blocos de Python devem ser escritos no arquivo <code>main.py</code>. Não copie as marcações de início e fim dos blocos.</p></blockquote>
+<h2 id="3-crie-a-pasta-e-o-ambiente-virtual">3. Crie a pasta e o ambiente virtual</h2>
+<p>Se você já abriu a pasta desta aula no VS Code, use o terminal dessa pasta e pule os dois primeiros comandos. Para começar em uma nova pasta:</p>
+<div class="code-block"><div class="code-label">powershell</div><pre><code>mkdir minha-api
+cd minha-api</code></pre></div>
+<p>Crie e ative o ambiente virtual:</p>
+<div class="code-block"><div class="code-label">powershell</div><pre><code>python -m venv .venv
+.\.venv\Scripts\Activate.ps1</code></pre></div>
+<p>O ambiente virtual separa os pacotes deste projeto dos pacotes de outros projetos. Normalmente, aparece <code>(.venv)</code> no início da linha quando ele está ativo.</p>
+<p>Se o PowerShell bloquear a ativação, você pode trabalhar sem ativar o ambiente, usando diretamente seus executáveis:</p>
+<div class="code-block"><div class="code-label">powershell</div><pre><code>.\.venv\Scripts\python.exe -m pip install &quot;fastapi[standard]&quot;
+.\.venv\Scripts\fastapi.exe dev main.py</code></pre></div>
+<p>Execute o segundo comando somente depois de criar o <code>main.py</code>, na próxima etapa. Se usar essa alternativa, a instalação abaixo já terá sido feita.</p>
+<p>No Linux/macOS, os comandos equivalentes são:</p>
+<div class="code-block"><div class="code-label">bash</div><pre><code>python3 -m venv .venv
+source .venv/bin/activate</code></pre></div>
+<h2 id="4-instale-o-fastapi">4. Instale o FastAPI</h2>
+<p>Com o ambiente virtual ativo:</p>
+<div class="code-block"><div class="code-label">powershell</div><pre><code>python -m pip install &quot;fastapi[standard]&quot;</code></pre></div>
+<p>As aspas fazem parte do comando. Essa instalação inclui os componentes padrão necessários para executar o servidor de desenvolvimento. O uso de ambiente virtual com <code>pip</code> está descrito na <a href="https://fastapi.tiangolo.com/virtual-environments/">documentação oficial de instalação e ambientes virtuais</a>.</p>
+<p>Ao longo da aula, sua pasta terá esta estrutura:</p>
+<div class="code-block"><div class="code-label">text</div><pre><code>minha-api/
+├── .venv/     ← ambiente virtual; não edite seus arquivos
+└── main.py    ← código da nossa API</code></pre></div>
+<h2 id="5-crie-sua-primeira-rota">5. Crie sua primeira rota</h2>
+<p>Crie o arquivo <strong>`main.py`</strong> na pasta do projeto, fora da <code>.venv</code>, e escreva:</p>
+<div class="code-block"><div class="code-label">python</div><pre><code>from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get(&quot;/&quot;)
+def inicio():
+    return {&quot;mensagem&quot;: &quot;Minha primeira API está funcionando!&quot;}</code></pre></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabela da aula"><table><thead><tr><th scope="col">Trecho</th><th scope="col">O que faz</th></tr></thead><tbody><tr><td><code>from fastapi import FastAPI</code></td><td>Importa a classe que cria a aplicação.</td></tr><tr><td><code>app = FastAPI()</code></td><td>Cria a aplicação.</td></tr><tr><td><code>@app.get(&quot;/&quot;)</code></td><td>Associa a função abaixo a uma requisição GET na rota <code>/</code>.</td></tr><tr><td><code>def inicio():</code></td><td>Define a função executada ao acessar a rota.</td></tr><tr><td><code>return {...}</code></td><td>Devolve um dicionário, convertido em JSON pelo FastAPI.</td></tr></tbody></table></div>
+<p>O <code>@app.get(...)</code> é um <strong>decorador</strong>: aqui, ele registra a função como uma operação da API. Para estes exemplos, podemos usar funções com <code>def</code>.</p>
+<p>Salve o arquivo e execute no terminal, dentro da pasta que contém <code>main.py</code>:</p>
+<div class="code-block"><div class="code-label">powershell</div><pre><code>fastapi dev main.py</code></pre></div>
+<p>O comando inicia o servidor de desenvolvimento e recarrega a aplicação quando você salva alterações. Veja a <a href="https://fastapi.tiangolo.com/tutorial/first-steps/">referência dos primeiros passos e da execução</a>.</p>
+<p>Abra no navegador: <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></p>
+<p>Resposta esperada:</p>
+<div class="code-block"><div class="code-label">json</div><pre><code>{
+  &quot;mensagem&quot;: &quot;Minha primeira API está funcionando!&quot;
+}</code></pre></div>
+<p><code>127.0.0.1</code> aponta para o seu próprio computador; <code>8000</code> é a porta usada pelo servidor. Deixe o terminal aberto. Para encerrar, pressione <strong>Ctrl + C</strong>.</p>
+<p><strong>Confira antes de continuar:</strong> a mensagem apareceu no navegador? Se apareceu, sua primeira rota está funcionando!</p>
+<h2 id="6-conheca-a-pagina-de-testes">6. Conheça a página de testes</h2>
+<p>Abra <a href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a>.</p>
+<p>Essa página é a documentação interativa da API, também conhecida como Swagger UI. Abra <strong>GET /</strong>, clique em <strong>Try it out</strong> e depois em <strong>Execute</strong>.</p>
+<p>Observe o campo <strong>Server response</strong>: ele mostra o código de status e o corpo da resposta. A seção <strong>Responses</strong> descreve as respostas possíveis; ela não é, necessariamente, o resultado da sua execução.</p>
+<p>Digitar uma URL na barra do navegador envia uma consulta GET. Para cadastrar, atualizar e excluir, usaremos os botões do <code>/docs</code>.</p>
+<h2 id="7-evolua-para-uma-api-de-produtos">7. Evolua para uma API de produtos</h2>
+<p>Agora vamos praticar <strong>CRUD</strong>: criar, consultar, atualizar e excluir dados.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabela da aula"><table><thead><tr><th scope="col">Método</th><th scope="col">Rota</th><th scope="col">Operação</th></tr></thead><tbody><tr><td>GET</td><td><code>/</code></td><td>Verificar a mensagem inicial.</td></tr><tr><td>GET</td><td><code>/produtos</code></td><td>Listar os produtos.</td></tr><tr><td>GET</td><td><code>/produtos/{produto_id}</code></td><td>Consultar um produto pelo ID.</td></tr><tr><td>POST</td><td><code>/produtos</code></td><td>Criar um produto.</td></tr><tr><td>PUT</td><td><code>/produtos/{produto_id}</code></td><td>Atualizar nome e preço de um produto.</td></tr><tr><td>DELETE</td><td><code>/produtos/{produto_id}</code></td><td>Excluir um produto.</td></tr></tbody></table></div>
+<p><strong>Substitua todo o conteúdo de `main.py`</strong> pelo exemplo completo abaixo. Não acrescente este código ao exemplo anterior.</p>
+<div class="code-block"><div class="code-label">python</div><pre><code>from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, Field
+
+app = FastAPI(title=&quot;Minha API de Produtos&quot;)
+
+
+class ProdutoEntrada(BaseModel):
+    nome: str = Field(min_length=1)
+    preco: float = Field(gt=0)
+
+
+# Os dados ficam apenas na memória durante a execução.
+produtos = {}
+proximo_id = 1
+
+
+@app.get(&quot;/&quot;)
+def inicio():
+    return {&quot;mensagem&quot;: &quot;API de produtos funcionando!&quot;}
+
+
+@app.get(&quot;/produtos&quot;)
+def listar_produtos():
+    return list(produtos.values())
+
+
+@app.get(&quot;/produtos/{produto_id}&quot;)
+def buscar_produto(produto_id: int):
+    if produto_id not in produtos:
+        raise HTTPException(status_code=404, detail=&quot;Produto não encontrado&quot;)
+    return produtos[produto_id]
+
+
+@app.post(&quot;/produtos&quot;, status_code=201)
+def criar_produto(produto: ProdutoEntrada):
+    global proximo_id
+
+    novo_produto = {
+        &quot;id&quot;: proximo_id,
+        &quot;nome&quot;: produto.nome,
+        &quot;preco&quot;: produto.preco,
+    }
+    produtos[proximo_id] = novo_produto
+    proximo_id += 1
+    return novo_produto
+
+
+@app.put(&quot;/produtos/{produto_id}&quot;)
+def atualizar_produto(produto_id: int, produto: ProdutoEntrada):
+    if produto_id not in produtos:
+        raise HTTPException(status_code=404, detail=&quot;Produto não encontrado&quot;)
+
+    produtos[produto_id] = {
+        &quot;id&quot;: produto_id,
+        &quot;nome&quot;: produto.nome,
+        &quot;preco&quot;: produto.preco,
+    }
+    return produtos[produto_id]
+
+
+@app.delete(&quot;/produtos/{produto_id}&quot;)
+def excluir_produto(produto_id: int):
+    if produto_id not in produtos:
+        raise HTTPException(status_code=404, detail=&quot;Produto não encontrado&quot;)
+
+    del produtos[produto_id]
+    return {&quot;mensagem&quot;: &quot;Produto excluído com sucesso&quot;}</code></pre></div>
+<p>Salve o arquivo. Se o servidor ainda estiver rodando, aguarde o recarregamento; caso contrário, execute <code>fastapi dev main.py</code>. Atualize a página <code>/docs</code> para ver as novas rotas.</p>
+<h3 id="entenda-as-novas-partes">Entenda as novas partes</h3>
+<ul><li><code>ProdutoEntrada</code> é uma classe que descreve os dados recebidos: nome e preço. Ela herda de <code>BaseModel</code>, do Pydantic, para validar esses dados.</li><li><code>nome: str</code> indica texto; <code>min_length=1</code> impede uma string vazia. Essa regra simples ainda aceita um nome formado apenas por espaços.</li><li><code>preco: float</code> indica um número; <code>gt=0</code> exige um valor maior que zero.</li><li><code>produto_id: int</code> faz o FastAPI validar o ID da URL como um número inteiro. Em <code>/produtos/1</code>, o ID recebido é <code>1</code>.</li><li><code>produto: ProdutoEntrada</code> recebe os dados JSON do <strong>corpo da requisição</strong>. O aluno não precisa enviar o ID no cadastro: a API o cria.</li><li><code>produtos</code> é um dicionário que relaciona cada ID aos dados do produto.</li><li><code>global proximo_id</code> permite atualizar o contador definido fora da função. É uma simplificação para esta aula.</li><li><code>HTTPException</code> interrompe a operação e devolve um erro HTTP. Usamos <code>404</code> quando o produto não existe.</li></ul>
+<p>Confira as referências oficiais sobre <a href="https://fastapi.tiangolo.com/tutorial/body/">dados no corpo da requisição</a> e <a href="https://fastapi.tiangolo.com/tutorial/handling-errors/">tratamento de erros</a>.</p>
+<blockquote><p><strong>Os cadastros são temporários.</strong> Reiniciar o servidor, inclusive pelo recarregamento ao salvar o código, apaga todos os produtos e reinicia o contador. O arquivo <code>main.py</code> continua salvo. Este armazenamento serve para a prática local da aula; persistência em banco de dados será uma próxima etapa.</p></blockquote>
+<blockquote><p>Usamos <code>float</code> para simplificar o exercício. Sistemas financeiros precisam de um tratamento adequado para valores monetários, como <code>Decimal</code> ou centavos inteiros.</p></blockquote>
+<h2 id="8-teste-o-crud-passo-a-passo">8. Teste o CRUD, passo a passo</h2>
+<p>Faça a sequência sem editar o código entre os testes, para evitar que os cadastros sejam apagados pelo recarregamento.</p>
+<h3 id="a-liste-antes-de-cadastrar">A. Liste antes de cadastrar</h3>
+<p>No <code>/docs</code>, abra <strong>GET /produtos → Try it out → Execute</strong>. Você deve receber status <code>200</code> e uma lista vazia: <code>[]</code>.</p>
+<h3 id="b-cadastre-um-produto">B. Cadastre um produto</h3>
+<p>Abra <strong>POST /produtos</strong>, clique em <strong>Try it out</strong>, substitua o conteúdo de <strong>Request body</strong> por este JSON e clique em <strong>Execute</strong>:</p>
+<div class="code-block"><div class="code-label">json</div><pre><code>{
+  &quot;nome&quot;: &quot;Teclado&quot;,
+  &quot;preco&quot;: 120.0
+}</code></pre></div>
+<p>Se este for o primeiro cadastro desde que o servidor iniciou, a resposta terá status <code>201</code> e será:</p>
+<div class="code-block"><div class="code-label">json</div><pre><code>{
+  &quot;id&quot;: 1,
+  &quot;nome&quot;: &quot;Teclado&quot;,
+  &quot;preco&quot;: 120.0
+}</code></pre></div>
+<p>Anote o ID retornado. Se você já cadastrou outros produtos, ele pode ser diferente de <code>1</code>.</p>
+<h3 id="c-consulte">C. Consulte</h3>
+<p>Execute <strong>GET /produtos</strong> novamente: a lista deve conter o produto criado. Depois, execute <strong>GET /produtos/{produto_id}</strong>, preenchendo <code>produto_id</code> com o ID anotado.</p>
+<h3 id="d-atualize">D. Atualize</h3>
+<p>Execute <strong>PUT /produtos/{produto_id}</strong> com o mesmo ID e este corpo:</p>
+<div class="code-block"><div class="code-label">json</div><pre><code>{
+  &quot;nome&quot;: &quot;Teclado USB&quot;,
+  &quot;preco&quot;: 99.9
+}</code></pre></div>
+<p>A resposta deve ter status <code>200</code> e mostrar o mesmo ID com os novos dados. Neste exemplo, PUT exige os dois campos: nome e preço.</p>
+<h3 id="e-exclua">E. Exclua</h3>
+<p>Execute <strong>DELETE /produtos/{produto_id}</strong> com o mesmo ID. Você deve receber status <code>200</code> e:</p>
+<div class="code-block"><div class="code-label">json</div><pre><code>{
+  &quot;mensagem&quot;: &quot;Produto excluído com sucesso&quot;
+}</code></pre></div>
+<p>Consulte o ID excluído usando GET. Agora, a resposta deve ter status <code>404</code>:</p>
+<div class="code-block"><div class="code-label">json</div><pre><code>{
+  &quot;detail&quot;: &quot;Produto não encontrado&quot;
+}</code></pre></div>
+<h3 id="f-teste-as-regras-de-validacao">F. Teste as regras de validação</h3>
+<p>Tente cadastrar:</p>
+<div class="code-block"><div class="code-label">json</div><pre><code>{
+  &quot;nome&quot;: &quot;Mouse&quot;,
+  &quot;preco&quot;: -10
+}</code></pre></div>
+<p>A resposta deve ter status <code>422</code>, pois o preço precisa ser maior que zero. Tente também nome vazio (<code>&quot;&quot;</code>), preço zero e ausência do campo <code>nome</code>. Esses dados também devem ser rejeitados.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabela da aula"><table><thead><tr><th scope="col">Status</th><th scope="col">Significado nesta aula</th></tr></thead><tbody><tr><td><code>200</code></td><td>Operação realizada com sucesso.</td></tr><tr><td><code>201</code></td><td>Produto criado.</td></tr><tr><td><code>404</code></td><td>Produto não encontrado.</td></tr><tr><td><code>422</code></td><td>Dados enviados não atendem às regras.</td></tr></tbody></table></div>
+<h2 id="9-atividade-pratica">9. Atividade prática</h2>
+<ol><li>Cadastre três produtos e anote seus IDs.</li><li>Liste todos os produtos e confira os dados.</li><li>Consulte um produto pelo ID.</li><li>Atualize nome e preço de um dos produtos.</li><li>Exclua outro e consulte seu ID para verificar o <code>404</code>.</li><li>Tente cadastrar um preço negativo e verifique o <code>422</code>.</li><li>Reinicie o servidor e confira que a lista voltou a ficar vazia.</li></ol>
+<p><strong>Registre os resultados:</strong> para cada operação, anote método, rota, status e resposta. Você pode entregar essas anotações junto com o <code>main.py</code>.</p>
+<p>Para discutir em sala: qual é a diferença entre a rota <code>/produtos</code> e <code>/produtos/1</code>? Por que nome e preço vão no corpo do POST, enquanto o ID vai na URL da busca? Por que os produtos desaparecem ao reiniciar?</p>
+<p><strong>Desafio opcional:</strong> adicione um campo <code>estoque</code>, inteiro e maior ou igual a zero, ao modelo. Inclua esse campo nos dicionários de criação e atualização. Teste um estoque válido e outro negativo.</p>
+<h2 id="10-como-retomar-o-projeto-em-outra-aula">10. Como retomar o projeto em outra aula</h2>
+<p>Abra a pasta do projeto no VS Code e um novo terminal. No Windows:</p>
+<div class="code-block"><div class="code-label">powershell</div><pre><code>.\.venv\Scripts\Activate.ps1
+fastapi dev main.py</code></pre></div>
+<p>Se a ativação estiver bloqueada, use <code>.\.venv\Scripts\fastapi.exe dev main.py</code>.</p>
+<p>Você não precisa reinstalar o FastAPI enquanto o ambiente virtual existir. Abra novamente <a href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a>. Os produtos precisarão ser cadastrados outra vez.</p>
+<h2 id="11-problemas-comuns">11. Problemas comuns</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabela da aula"><table><thead><tr><th scope="col">Problema</th><th scope="col">Como resolver</th></tr></thead><tbody><tr><td><code>python</code> não reconhecido</td><td>Tente <code>py</code> no Windows; confira a instalação e abra um novo terminal.</td></tr><tr><td>Ativação bloqueada no PowerShell</td><td>Use os executáveis da <code>.venv</code> diretamente, conforme a etapa 3.</td></tr><tr><td><code>fastapi</code> não reconhecido</td><td>Ative a <code>.venv</code> e instale <code>&quot;fastapi[standard]&quot;</code>; ou use <code>.\.venv\Scripts\fastapi.exe</code>.</td></tr><tr><td><code>No module named fastapi</code></td><td>Instale o pacote com o Python da <code>.venv</code>. No VS Code, selecione esse ambiente em <strong>Python: Select Interpreter</strong>.</td></tr><tr><td><code>main.py</code> não encontrado</td><td>Confira se o terminal está na pasta do arquivo e se ele não foi salvo como <code>main.py.txt</code>.</td></tr><tr><td>Erro de indentação</td><td>Preserve os recuos do exemplo; use quatro espaços dentro de classes, funções e condições.</td></tr><tr><td>Porta 8000 ocupada</td><td>Execute <code>fastapi dev main.py --port 8001</code> e abra <code>http://127.0.0.1:8001/docs</code>.</td></tr><tr><td>Navegador não conecta</td><td>Confira se o servidor está rodando e se a porta da URL é a mesma indicada no terminal.</td></tr><tr><td>Produto retorna <code>404</code></td><td>Confira o ID; ele pode ter sido excluído ou os dados apagados por um reinício.</td></tr><tr><td>Resposta <code>422</code></td><td>Confira os campos obrigatórios, os tipos e o preço maior que zero.</td></tr><tr><td>Novas rotas não aparecem no <code>/docs</code></td><td>Salve o arquivo, aguarde o recarregamento e atualize a página.</td></tr></tbody></table></div>
+<h2 id="nota-para-o-professor-revisao-do-material-original">Nota para o professor: revisão do material original</h2>
+<p>O material original oferece uma boa sequência inicial: ambiente virtual, primeira rota, execução local e testes pelo navegador. Porém, o exemplo apresentado como completo estava interrompido na busca por ID: faltava retornar o produto encontrado e implementar POST, PUT e DELETE. Assim, o aluno não conseguiria realizar o cadastro nem concluir o exercício proposto.</p>
+<p>Este roteiro completa essas operações, organiza os códigos em blocos copiáveis e acrescenta uma sequência de testes com resultados esperados. Para a primeira aula, priorize as etapas 1 a 6; avance para o CRUD conforme o ritmo da turma. Banco de dados, autenticação e organização em múltiplos arquivos podem ficar para aulas seguintes.</p>
+<a class="back" href="#topo">Voltar ao início ↑</a>
+</main>
+</div>
+<footer>Material de apoio para a primeira aula de API · Python e FastAPI</footer>
+</body>
+</html>
